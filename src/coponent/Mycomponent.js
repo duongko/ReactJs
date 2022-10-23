@@ -1,5 +1,6 @@
 import React from 'react';
 import Userinfo from './Userinfo';
+import Displayinfo from './Displayinfo';
 
 class Mycomponent extends React.Component {
 
@@ -11,6 +12,8 @@ class Mycomponent extends React.Component {
 
             <div>
                 <Userinfo />
+                <hr />
+                <Displayinfo name="hỏi dân it" age="12" />
 
 
 
