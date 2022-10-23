@@ -1,13 +1,30 @@
 import React from "react";
+import Displayinfo from "./Displayinfo";
 
-class Userinfo extends React.Component {
+
+class AddUserinfo extends React.Component {
     state = {
+        id: '1',
         name: 'dương',
         age: '23',
     }
 
     handelonSubmit = (event) => {
         event.preventDefault();
+        this.props.handlAddnewUser({
+
+            id: Math.floor((Math.random() * 100) + 1) + "-radom",
+            name: this.state.name,
+            age: this.state.age,
+
+
+
+
+
+        })
+
+
+
 
         // event.preventDefaut() dung de ngăn không cho load lại trang khi ấn nút submit
     }
@@ -44,8 +61,8 @@ class Userinfo extends React.Component {
         return (
 
             <div>
-                <div>tên: {this.state.name}</div>
-                <label>age: {this.state.age}</label>
+                {/* <div>tên: {this.state.name}</div>
+                <label>age: {this.state.age}</label> */}
 
                 <form onSubmit={(event) => { this.handelonSubmit(event) }}>
                     <label>tên: </label>
@@ -69,4 +86,4 @@ class Userinfo extends React.Component {
         )
     }
 }
-export default Userinfo
+export default AddUserinfo

@@ -19,7 +19,7 @@ class Displayinfo extends React.Component {
         // console.log(this.props)
         const { listUser } = this.props;
         console.log(listUser)
-        console.table(listUser)
+        // console.table(listUser)
 
 
 
@@ -38,15 +38,16 @@ class Displayinfo extends React.Component {
                 tuổi: {age} */}
 
                 {listUser.map((user) => {
+                    console.log(user)
 
 
                     return (
-                        <div>
+                        <div key={user.id} className={+user.age > 22 ? "red" : "green"}>
 
 
 
                             {this.state.showlistUser &&
-                                <div key={user.id} className={+user.age > 22 ? "red" : "green"}>
+                                <div >
                                     tên của tôi là :{user.name}
                                     <br></br>
                                     tuổi: {user.age}
