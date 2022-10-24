@@ -51,7 +51,11 @@ class Displayinfo extends React.Component {
                                     tên của tôi là :{user.name}
                                     <br></br>
                                     tuổi: {user.age}
+                                    <span>
+                                        <button onClick={() => { this.props.handDelete(user.id) }}>Delete</button>
+                                    </span>
                                     <hr></hr>
+
 
                                 </div>
                             }

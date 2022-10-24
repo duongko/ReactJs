@@ -1,17 +1,17 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import Mycomponent from './coponent/Mycomponent';
 import React from 'react';
 
 class App extends React.Component {
   render() {
     return (
+      <>
 
-      <div>
         <h3>hello tất cả các bạn</h3>
         <Mycomponent />
+      </>
 
-      </div>
     )
   }
 
