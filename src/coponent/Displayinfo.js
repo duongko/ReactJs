@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // class Displayinfo extends React.Component {
 
@@ -92,64 +92,92 @@ import React from "react";
 //     }
 // }
 
-/////////////////////////////////////////////////////////////////////////////////////////
-// REACTJS HOOK/////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+//REACTJS HOOK/////////////////////////////
 
 
 //KHI KHÔNG CÓ STATE THÌ SẼ DÙNG HOOK, STATE NÀY GỌI LÀ STATELESS
 
 
 const Displayinfo = (props) => {
+    // constructor(props) {
+    //             console.log("call me contructor : 1");
+    //             super(props);
+    //             this.state = {
+    //                 showlistUser: true
+    //             }
+    //         }
+
+    const [showlistUser, setshowlistUser] = useState(true)
 
 
-    console.log("call me render")
+    const handleHide = () => {
+        // alert("heloo")
+        setshowlistUser(!showlistUser)
+    }
+
+    const handlonclick = (user) => {
+        const { handDelete } = props
+        props.handDelete(user)
+
+    }
+
 
     const { listUser } = props;
+    console.log(listUser.map((value) => value))
+
+
+
+
+
     //đây là cách viết destructuring <=> const age= this.props.age
     return (
 
         <div>
 
+            <span onClick={() => handleHide()}>
+
+
+                {showlistUser === true ? "Ẩn dữ liệu" : "Hiện dữ liệu"}
+            </span>
+
+
+            {listUser.map((user) => {
+                // console.log(user)
+
+
+                return (
+                    <div key={user.id} className={+user.age > 22 ? "red" : "green"}>
 
 
 
+                        {showlistUser &&
+                            <div >
+                                tên của tôi là :{user.name}
+                                <br></br>
+                                tuổi: {user.age}
+                                <span>
+                                    <button onClick={() => { handlonclick(user.id) }}>Delete</button>
+                                    {/* <button onClick={() => { this.props.handDelete(user.id)}}>Delete</button> */}
+                                </span>
+                                <hr></hr>
+
+
+                            </div>
+                        }
+                    </div>
+                )
 
 
 
-            {
-                listUser.map((user) => {
-                    // console.log(user)
-
-
-                    return (
-                        <div key={user.id} className={+user.age > 22 ? "red" : "green"}>
-
-
-
-                            {true &&
-                                <div >
-                                    tên của tôi là :{user.name}
-                                    <br></br>
-                                    tuổi: {user.age}
-                                    <span>
-                                        {/* <button onClick={() => { this.handlonclick(user.id) }}>Delete</button> */}
-                                        <button onClick={() => props.handDelete(user.id)}>Delete</button>
-                                    </span>
-                                    <hr></hr>
-
-
-                                </div>
-                            }
-                        </div>
-                    )
-
-
-
-                })
-            }
-        </div >
+            })}
+        </div>
 
     )
+
+
+
+
 }
 
 
