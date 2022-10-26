@@ -123,8 +123,8 @@ const Displayinfo = (props) => {
     }
 
 
-    const { listUser } = props;
-    console.log(listUser.map((value) => value))
+    var { listUser } = props;
+    console.log("mảng :", listUser.map((value) => value))
 
 
 
@@ -170,7 +170,8 @@ const Displayinfo = (props) => {
 
 
 
-            })}
+            })
+            }
         </div>
 
     )

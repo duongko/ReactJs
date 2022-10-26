@@ -81,13 +81,12 @@ const Mycomponent = () => {
 
 
     )
-    console.log(listUser)
+    console.log("listuser:", listUser)
 
     const handlAddnewUser = (user) => {
 
-        setlistUser({
-            listUser: [user, ...listUser],
-        })
+        setlistUser([user, ...listUser],
+        )
     }
 
     const handDelete = (userid) => {
