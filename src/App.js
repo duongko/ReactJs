@@ -1,6 +1,7 @@
 
 import './App.scss';
 import Header from './coponent/header/Header';
+import { Link, Outlet } from "react-router-dom";
 
 
 // class App extends React.Component {
@@ -26,13 +27,22 @@ import Header from './coponent/header/Header';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="app-container">
+      <div className='header-container'>
+        <Header />
+
+      </div>
+      <div>DƯƠNG ALO</div>
+      <div className='content-container'>
+
+        <Outlet />
+      </div>
 
 
-      <Header />
 
 
-    </div>
+
+    </div >
   );
 }
 export default App;
