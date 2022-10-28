@@ -2,17 +2,31 @@
     display: flex;
 
     .admin-sidebar {
+
+
         .sidebar-container .hidden {
             height: 100vh;
+
+            .header-sidebar {
+                overflow: hidden;
+                margin-left: 15px;
+            }
+
+
         }
 
         .sidebar-container .show {
             position: relative;
             border-right: 1px solid #efefef;
-            width: 80px;
+            width: 75px;
             min-width: 50px;
             -webkit-transition: width, left, right, 300ms;
             transition: width, left, right, 300ms;
+
+            .header-sidebar {
+                overflow: hidden;
+                margin-left: 15px;
+            }
 
             .fpTHfu {
                 height: 100vh;

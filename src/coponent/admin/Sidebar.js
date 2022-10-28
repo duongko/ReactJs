@@ -1,5 +1,5 @@
 import { Collapse } from 'bootstrap';
-import { FaAccessibleIcon, FaAddressBook, FaAddressCard, FaAdversal, FaBabyCarriage, FaTachometerAlt } from 'react-icons/fa';
+import { FaAccessibleIcon, FaAddressBook, FaAddressCard, FaAdversal, FaBabyCarriage, FaTachometerAlt, DiReact, FaReact } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 
@@ -14,7 +14,7 @@ const Sidebars = (props) => {
             >
 
                 < Sidebar className={Collapsed === true ? "hidden" : "show"}>
-                    <div
+                    <div FaAccessibleIcon
 
                         style={{
                             padding: "24px",
@@ -27,7 +27,8 @@ const Sidebars = (props) => {
 
                         }}
                     >
-                        Dương Manh Manh
+                        < FaReact size="2em" color='blue' />
+                        <span className='header-sidebar'>          Dương Manh Manh</span>
                     </div>
 
 
