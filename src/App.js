@@ -32,7 +32,7 @@ const App = () => {
         <Header />
 
       </div>
-      <div>DƯƠNG ALO</div>
+
       <div className='content-container'>
 
         <Outlet />

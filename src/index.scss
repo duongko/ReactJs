@@ -8,12 +8,88 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 1200px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1345px !important;
+  }
+}
+
+
 .app-container {
+  .content-container {
+    .home-content {
+      position: relative;
+      padding: 100px;
+      margin-top: 0px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .title-3 {
+        button {
+          border: 1px solid black;
+          border-radius: 5px;
+          margin-right: 10px;
+          padding: 0px 18px;
+          background: #636060f7;
+          color: #fff;
+          height: 37px;
+
+          &:hover {
+            background-color: black;
+          }
+        }
+
+      }
+    }
+  }
+
   .header-container {
 
 
-    .navbar-nav .nav-link.active {
-      color: rgb(44, 200, 221)
+
+    .navbar-nav {
+      z-index: 10;
+
+      .nav-link.active {
+        color: rgb(44, 200, 221)
+      }
+
+      .btn-login {
+        border-radius: 5px;
+        margin-right: 10px;
+        padding: 0 20px;
+        border: 1px solid #746f6f;
+        height: 37px;
+      }
+
+      .btn-signup {
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-right: 10px;
+        padding: 0px 18px;
+        background: #636060f7;
+        color: #fff;
+        height: 37px;
+
+        &:hover {
+          background-color: black;
+        }
+      }
     }
   }
+}
+
+
+
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
 }

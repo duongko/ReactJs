@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
+import './coponent/admin/Admin.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,9 +20,10 @@ root.render(
             path="users"
             element={<User />}
           />
-          <Route path="admin" element={<Admin />} />
+
           <Route index element={<Home />} />
         </Route>
+        <Route path="admin" element={<Admin />} />
 
 
       </Routes>
