@@ -5,13 +5,24 @@ import './MansUser.scss';
 import {
     FcPlus
 } from 'react-icons/fc'
+import axios from "axios"
 
 const ModalCreatuser = () => {
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false)
+        setemail('')
+        setpass('')
+        setusername('')
+        setrole('User')
+        setpreviewimg('')
+
+
+    };
     const handleShow = () => setShow(true);
+    //lấy các trường của form
     const [email, setemail] = useState('');
     const [pass, setpass] = useState('')
     const [username, setusername] = useState('')
@@ -24,10 +35,35 @@ const ModalCreatuser = () => {
         setimg(event.target.files[0]);
     }
 
+    const handlesubmit = async () => {
+
+        //cal API
+
+        // let data = {
+        //     email: email,
+        //     password: pass,
+        //     username: username,
+        //     role: role,
+        //     userImage: img,
+
+        // }
+        // console.log(data)
+        const data = new FormData();//vì cần lấy file ảnh nên phải dùng FormData
+
+        data.append('email', email);
+        data.append('password', pass);
+        data.append('username', username);
+        data.append('role', role);
+        data.append('userImage', img);
+
+        let res = await axios.post('http://localhost:8081/api/v1/participant', data);
+        console.log(">>>>", res);
+    }
+
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+                <FcPlus /> Add New User
             </Button>
 
             <Modal show={show} onHide={handleClose} size="xl" backdrop="static" className='modal-user'>
@@ -36,22 +72,22 @@ const ModalCreatuser = () => {
                 </Modal.Header>
                 <Modal.Body><form className="row g-3">
                     <div className="col-md-6">
-                        <label for="inputEmail4" className="form-label">Email</label>
+                        <label className="form-label">Email</label>
                         <input type="email" className="form-control" id="inputEmail4" value={email} onChange={(event) => {
                             setemail(event.target.value)
                         }} />
                     </div>
                     <div className="col-md-6">
-                        <label for="inputPassword4" className="form-label">Password</label>
+                        <label className="form-label">Password</label>
                         <input type="password" className="form-control" value={pass} onChange={(event) => { setpass(event.target.value) }} />
                     </div>
 
                     <div className="col-md-6">
-                        <label for="inputCity" className="form-label">UserName</label>
+                        <label className="form-label">UserName</label>
                         <input type="text" className="form-control" value={username} onChange={(event) => { setusername(event.target.value) }} />
                     </div>
                     <div className="col-md-4">
-                        <label for="inputState" className="form-label">Role</label>
+                        <label className="form-label">Role</label>
                         <select id="inputState" className="form-select" onChange={(event) => { setrole(event.target.value) }}>
                             <option value="User">User</option>
                             <option value="Admin">Admin</option>
@@ -59,7 +95,7 @@ const ModalCreatuser = () => {
                         </select>
                     </div>
                     <div className='col-md-12'>
-                        <label for="inputState" className="form-label upload" htmlFor='uploadfile'>
+                        <label className="form-label upload" htmlFor='uploadfile'>
                             <FcPlus size="1.2em"
                             />Upload File Image
                         </label>
@@ -88,7 +124,7 @@ const ModalCreatuser = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handlesubmit}>
                         Save
                     </Button>
                 </Modal.Footer>

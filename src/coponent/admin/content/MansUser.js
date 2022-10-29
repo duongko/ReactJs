@@ -12,7 +12,7 @@ const MansUser = (props) => {
             </div>
             <div className="User-content">
                 <div>
-                    <button><ModalCreatuser /></button>
+                    <ModalCreatuser />
                 </div>
 
             </div>
