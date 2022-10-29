@@ -4,6 +4,7 @@ import Header from './coponent/header/Header';
 import { Link, Outlet } from "react-router-dom";
 
 
+
 // class App extends React.Component {
 //   render() {
 //     return (
@@ -28,6 +29,7 @@ import { Link, Outlet } from "react-router-dom";
 const App = () => {
   return (
     <div className="app-container">
+
       <div className='header-container'>
         <Header />
 
@@ -37,6 +39,7 @@ const App = () => {
 
         <Outlet />
       </div>
+
 
 
 

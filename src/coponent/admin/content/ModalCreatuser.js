@@ -6,6 +6,7 @@ import {
     FcPlus
 } from 'react-icons/fc'
 import axios from "axios"
+import { toast } from 'react-toastify';
 
 const ModalCreatuser = () => {
 
@@ -34,20 +35,22 @@ const ModalCreatuser = () => {
         setpreviewimg(URL.createObjectURL(event.target.files[0]));
         setimg(event.target.files[0]);
     }
-
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
     const handlesubmit = async () => {
+        const ivaliemail = validateEmail(email)
+
+        if (!ivaliemail) {
+            toast.error('Invalid email');
+            return;
+        }
 
         //cal API
-
-        // let data = {
-        //     email: email,
-        //     password: pass,
-        //     username: username,
-        //     role: role,
-        //     userImage: img,
-
-        // }
-        // console.log(data)
         const data = new FormData();//vì cần lấy file ảnh nên phải dùng FormData
 
         data.append('email', email);
@@ -56,8 +59,18 @@ const ModalCreatuser = () => {
         data.append('role', role);
         data.append('userImage', img);
 
-        let res = await axios.post('http://localhost:8081/api/v1/participant', data);
+        let res = await axios.post('http://localhost:8081/api/v1/participant', res.data);
         console.log(">>>>", res);
+        if (res.data && rex.data.EC === 0) {
+            toast.success(res.data.EM);
+            handleClose();
+        }
+        if (res.data && rex.data.EC != 0) {
+            toast.success(res.data.EM);
+
+        }
+
+
     }
 
     return (
