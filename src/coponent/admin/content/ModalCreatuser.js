@@ -5,8 +5,10 @@ import './MansUser.scss';
 import {
     FcPlus
 } from 'react-icons/fc'
-import axios from "axios"
+
 import { toast } from 'react-toastify';
+import { PostapiService } from '../../../service/apiService';
+
 
 const ModalCreatuser = () => {
 
@@ -43,30 +45,23 @@ const ModalCreatuser = () => {
             );
     };
     const handlesubmit = async () => {
-        const ivaliemail = validateEmail(email)
+        // const ivaliemail = validateEmail(email)
 
-        if (!ivaliemail) {
-            toast.error('Invalid email');
-            return;
-        }
+        // if (!ivaliemail) {
+        //     toast.error('Invalid email');
+        //     return;
+        // }
 
         //cal API
-        const data = new FormData();//vì cần lấy file ảnh nên phải dùng FormData
 
-        data.append('email', email);
-        data.append('password', pass);
-        data.append('username', username);
-        data.append('role', role);
-        data.append('userImage', img);
-
-        let res = await axios.post('http://localhost:8081/api/v1/participant', res.data);
-        console.log(">>>>", res);
-        if (res.data && rex.data.EC === 0) {
-            toast.success(res.data.EM);
+        let data = await PostapiService(email, pass, username, role, img);
+        console.log(">>>>respone", data);
+        if (data && data.EC === 0) {
+            toast.success(data.EM);
             handleClose();
         }
-        if (res.data && rex.data.EC != 0) {
-            toast.success(res.data.EM);
+        if (data && data.EC !== 0) {
+            toast.error(data.EM);
 
         }
 

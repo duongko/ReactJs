@@ -3,11 +3,13 @@ import ModalCreatuser from "./ModalCreatuser";
 
 
 
+import TableUser from "./TableUser";
 const MansUser = (props) => {
     return (
         <div className="mansUser">
             <div className="tittle">
                 quản lý người dùng
+
 
             </div>
             <div className="User-content">
@@ -17,7 +19,7 @@ const MansUser = (props) => {
 
             </div>
             <div>
-                bảng người dùng
+                <TableUser />
             </div>
         </div>
     )
