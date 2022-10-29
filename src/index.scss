@@ -6,7 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
+
 
 @media (min-width: 1200px) {
 
@@ -40,6 +42,7 @@ body {
           background: #636060f7;
           color: #fff;
           height: 37px;
+          border: none;
 
           &:hover {
             background-color: black;

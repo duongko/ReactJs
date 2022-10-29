@@ -2,6 +2,7 @@ import { Collapse } from 'bootstrap';
 import { FaAccessibleIcon, FaAddressBook, FaAddressCard, FaAdversal, FaBabyCarriage, FaTachometerAlt, DiReact, FaReact } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
 import { ProSidebarProvider } from 'react-pro-sidebar';
+import { Link } from 'react-router-dom';
 
 
 
@@ -10,8 +11,7 @@ const Sidebars = (props) => {
 
     return (
         <div className='sidebar-container'>
-            <ProSidebarProvider
-            >
+            <ProSidebarProvider>
 
                 < Sidebar className={Collapsed === true ? "hidden" : "show"}>
                     <div FaAccessibleIcon
@@ -34,9 +34,14 @@ const Sidebars = (props) => {
 
                     <Menu
                     >
-                        <MenuItem icon={<FaTachometerAlt />}>Dashboard</MenuItem>
+                        <MenuItem icon={<FaTachometerAlt />}>
+
+
+                            <Link to="/admin/Dashboard" >Dashboard</Link>
+
+                        </MenuItem>
                         <SubMenu label="Charts" icon={<FaBabyCarriage />}>
-                            <MenuItem icon={<FaAccessibleIcon />}> Quản lý User </MenuItem>
+                            <MenuItem icon={<FaAccessibleIcon />}>     <Link to="/admin/MansUser" >Quản lý User</Link> </MenuItem>
                             <MenuItem icon={<FaAddressCard />}> Quản lý bài Quiz </MenuItem>
                             <MenuItem icon={<FaAddressBook />}> Quản lý câu hỏi </MenuItem>
                         </SubMenu>

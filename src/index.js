@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import User from './coponent/user/User';
 import Admin from './coponent/admin/Admin';
 import Home from './coponent/home/Home';
+import Dashboard from './coponent/admin/content/Dashboard';
+import MansUser from './coponent/admin/content/MansUser';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,7 +25,14 @@ root.render(
 
           <Route index element={<Home />} />
         </Route>
-        <Route path="admin" element={<Admin />} />
+        <Route path="/admin" element={<Admin />} >
+          <Route path="Dashboard" element={<Dashboard />} />
+          <Route path="MansUser" element={<MansUser />} />
+          <Route index element={<Dashboard />} />
+
+
+
+        </Route>
 
 
       </Routes>
