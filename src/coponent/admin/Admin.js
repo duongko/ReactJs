@@ -25,7 +25,7 @@ const Admin = (props) => {
                 </div>
                 <div className="admin-main">
                     <Outlet />
-
+                    {/* ấy theo router */}
                 </div>
 
             </div>

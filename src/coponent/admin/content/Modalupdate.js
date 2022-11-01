@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './MansUser.scss';
@@ -7,12 +7,14 @@ import {
 } from 'react-icons/fc'
 
 import { toast } from 'react-toastify';
-import { PostapiService } from '../../../service/apiService';
+import { PutapiService } from '../../../service/apiService';
+import _ from 'lodash'
 
 
 const ModalCreatuser = (props) => {
 
     const { show, setShow } = props
+    const { userupdate } = props
 
     const handleClose = () => {
         setShow(false)
@@ -32,6 +34,22 @@ const ModalCreatuser = (props) => {
     const [role, setrole] = useState('User')
     const [img, setimg] = useState()
     const [previewimg, setpreviewimg] = useState()
+
+
+    useEffect(() => {
+        if (!_.isEmpty(userupdate)) {
+
+            // console.log("useeffect")
+            setemail(userupdate.email)
+            setpass(userupdate.pass)
+            setusername(userupdate.username)
+            setrole(userupdate.role)
+            setpreviewimg(`data:image/jpeg;base64,${userupdate.image}`)
+
+        }
+
+
+    }, [userupdate])
     const handleimg = (event) => {
         //Hàm lấy file ẢNh
         setpreviewimg(URL.createObjectURL(event.target.files[0]));
@@ -54,7 +72,7 @@ const ModalCreatuser = (props) => {
 
         //cal API
 
-        let data = await PostapiService(email, pass, username, role, img);
+        let data = await PutapiService(userupdate.id, email, username, role, img);
         console.log(">>>>respone", data);
         if (data && data.EC === 0) {
             toast.success(data.EM);
@@ -69,15 +87,15 @@ const ModalCreatuser = (props) => {
 
     }
 
+    console.log('check data : update')
+
     return (
         <>
-            <Button variant="primary" onClick={() => props.handleShow()}>
-                <FcPlus /> Add New User
-            </Button>
+
 
             <Modal show={show} onHide={handleClose} size="xl" backdrop="static" className='modal-user'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add New User</Modal.Title>
+                    <Modal.Title>Update user</Modal.Title>
                 </Modal.Header>
                 <Modal.Body><form className="row g-3">
                     <div className="col-md-6">
@@ -98,8 +116,8 @@ const ModalCreatuser = (props) => {
                     <div className="col-md-4">
                         <label className="form-label">Role</label>
                         <select id="inputState" className="form-select" onChange={(event) => { setrole(event.target.value) }}>
-                            <option value="User">User</option>
-                            <option value="Admin">Admin</option>
+                            <option value={role}>{role}</option>
+                            <option value={role}>{role}</option>
 
                         </select>
                     </div>

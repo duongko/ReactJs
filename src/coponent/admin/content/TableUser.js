@@ -1,28 +1,19 @@
-import { useEffect, useState } from "react";
-import { Getalluser } from "../../../service/apiService";
+import Modalupdate from "./Modalupdate"
+import React, { useState } from 'react';
 
-const TableUser = () => {
+const TableUser = (props) => {
 
-    const [listuser, setlistuser] = useState([])
+    const { listusers } = props;
 
-    useEffect(() => {
-        fetlistuser();
 
-    }, [])
-    const fetlistuser = async () => {
-        let res = await Getalluser();
-        console.log(">>>rest", res);
-        if (res.EC === 0) {
-            setlistuser(res.DT)
-        }
-    }
+
     return (
         <>
             <table className="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">NO</th>
-                        <th scope="col">email</th>
+                        <th scope="col">Email</th>
                         <th scope="col">UserName</th>
                         <th scope="col">Role</th>
                         {/* <th scope="col">Image</th> */}
@@ -31,7 +22,7 @@ const TableUser = () => {
                 </thead>
                 <tbody>
 
-                    {listuser.map((value, index) => {
+                    {listusers.map((value, index) => {
                         return (
                             <tr key={`table-user-${index}`}>
                                 <th scope="row">{index + 1}</th>
@@ -41,7 +32,10 @@ const TableUser = () => {
                                 {/* <td>{value.image}</td> */}
                                 <td>
                                     <button className="btn btn-secondary">View</button>
-                                    <button className="btn btn-warning mx-3 ">Update</button>
+                                    <button className="btn btn-warning mx-3 "
+
+                                        onClick={() => { props.handleShowupdate(value) }}
+                                    >Update</button>
                                     <button className="btn btn-danger">Delete</button>
                                 </td>
                             </tr>

@@ -27,8 +27,10 @@ const Sidebars = (props) => {
 
                         }}
                     >
-                        < FaReact size="2em" color='blue' />
-                        <span className='header-sidebar'>          Dương Manh Manh</span>
+                        < FaReact size="2em" color='blue' /><Link to="/">
+                            <span className='header-sidebar'>  Dương Manh Manh</span>
+                        </Link>
+
                     </div>
 
 
