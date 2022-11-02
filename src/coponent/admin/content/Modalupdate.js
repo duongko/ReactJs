@@ -14,7 +14,7 @@ import _ from 'lodash'
 const ModalCreatuser = (props) => {
 
     const { show, setShow } = props
-    const { userupdate } = props
+    const { userupdate, setuserupdate } = props
 
     const handleClose = () => {
         setShow(false)
@@ -23,6 +23,7 @@ const ModalCreatuser = (props) => {
         setusername('')
         setrole('User')
         setpreviewimg('')
+        setuserupdate('')
 
 
     };
@@ -100,13 +101,13 @@ const ModalCreatuser = (props) => {
                 <Modal.Body><form className="row g-3">
                     <div className="col-md-6">
                         <label className="form-label">Email</label>
-                        <input type="email" className="form-control" id="inputEmail4" value={email} onChange={(event) => {
+                        <input type="email" className="form-control" id="inputEmail4" value={email} disabled onChange={(event) => {
                             setemail(event.target.value)
                         }} />
                     </div>
                     <div className="col-md-6">
                         <label className="form-label">Password</label>
-                        <input type="password" className="form-control" value={pass} onChange={(event) => { setpass(event.target.value) }} />
+                        <input type="password" className="form-control" value={pass} disabled onChange={(event) => { setpass(event.target.value) }} />
                     </div>
 
                     <div className="col-md-6">
@@ -115,9 +116,10 @@ const ModalCreatuser = (props) => {
                     </div>
                     <div className="col-md-4">
                         <label className="form-label">Role</label>
-                        <select id="inputState" className="form-select" onChange={(event) => { setrole(event.target.value) }}>
-                            <option value={role}>{role}</option>
-                            <option value={role}>{role}</option>
+                        <select id="inputState" className="form-select" value={role} onChange={(event) => { setrole(event.target.value) }}>
+
+                            <option value='User'>User</option>
+                            <option value="Admin">Admin</option>
 
                         </select>
                     </div>

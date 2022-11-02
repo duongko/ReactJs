@@ -1,9 +1,10 @@
 import Modalupdate from "./Modalupdate"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const TableUser = (props) => {
 
     const { listusers } = props;
+
 
 
 
@@ -31,12 +32,12 @@ const TableUser = (props) => {
                                 <td>{value.role}</td>
                                 {/* <td>{value.image}</td> */}
                                 <td>
-                                    <button className="btn btn-secondary">View</button>
+                                    <button className="btn btn-secondary" onClick={() => { props.handleview(value) }}>View</button>
                                     <button className="btn btn-warning mx-3 "
 
                                         onClick={() => { props.handleShowupdate(value) }}
                                     >Update</button>
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-danger" onClick={() => { props.handledelete(value) }}>Delete</button>
                                 </td>
                             </tr>
 

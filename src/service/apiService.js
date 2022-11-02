@@ -17,12 +17,17 @@ const Getalluser = () => {
     return axios.get('api/v1/participant/all');
 
 }
+const Deleteuser = (useid) => {
+    return axios.delete('api/v1/participant', { data: { id: useid } });
+
+}
 
 const PutapiService = (id, email, username, role, img) => {
     const data = new FormData();//vì cần lấy file ảnh nên phải dùng FormData
-
-    data.append('email', email);
     data.append('id', id);
+
+
+
     data.append('username', username);
     data.append('role', role);
     data.append('userImage', img);
@@ -30,4 +35,4 @@ const PutapiService = (id, email, username, role, img) => {
 
 
 }
-export { PostapiService, Getalluser, PutapiService };
+export { PostapiService, Getalluser, PutapiService, Deleteuser };

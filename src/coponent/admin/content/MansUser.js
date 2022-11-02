@@ -4,12 +4,19 @@ import { Getalluser } from "../../../service/apiService";
 import Modalupdate from "./Modalupdate";
 
 import TableUser from "./TableUser";
+import Modaluserview from "./Modaluserview";
+import ModalDelete from "./ModalDelete";
 
 const MansUser = (props) => {
 
     const [listuser, setlistuser] = useState([])
     const [show, setShow] = useState(false);
     const [userupdate, setuserupdate] = useState([])
+    const [showupdate, setShowupdate] = useState(false);
+    const [showview, setShowview] = useState(false);
+    const [viewuser, setviewuser] = useState([])
+    const [showdelete, setShowdelete] = useState(false);
+    const [deleteuser, setdeleteuser] = useState()
 
     useEffect(() => {
         fetlistuser();
@@ -24,11 +31,24 @@ const MansUser = (props) => {
     }
     //////////////////////////
 
-    const [showupdate, setShowupdate] = useState(false);
+
     const handleShowupdate = (user) => {
         console.log("data user", user)
         setShowupdate(true)
         setuserupdate(user)
+    };
+
+    const handleview = (user) => {
+        console.log("data user", user)
+        setShowview(true)
+        setviewuser(user)
+
+    };
+    const handledelete = (user) => {
+        console.log("delete data", user)
+        setShowdelete(true)
+        setdeleteuser(user)
+
     };
     const handleShow = () => setShow(true);
     return (
@@ -48,6 +68,23 @@ const MansUser = (props) => {
                     setShow={setShowupdate}
                     userupdate={userupdate}
                     fetlistuser={fetlistuser}
+                    setuserupdate={setuserupdate}
+                />
+                <Modaluserview
+
+                    show={showview}
+                    setShow={setShowview}
+                    viewuser={viewuser}
+                    setviewuser={setviewuser}
+                />
+                <ModalDelete
+                    show={showdelete}
+                    setShow={setShowdelete}
+                    deleteuser={deleteuser}
+                    setdeleteuser={setdeleteuser}
+                    fetlistuser={fetlistuser}
+
+
                 />
 
 
@@ -55,7 +92,11 @@ const MansUser = (props) => {
             <div>
                 <TableUser listusers={listuser}
 
-                    handleShowupdate={handleShowupdate} />
+                    handleShowupdate={handleShowupdate}
+
+                    handleview={handleview}
+                    handledelete={handledelete}
+                />
             </div>
         </div>
     )
