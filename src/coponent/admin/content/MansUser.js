@@ -1,25 +1,33 @@
 import ModalCreatuser from "./ModalCreatuser";
 import { useEffect, useState } from "react";
-import { Getalluser } from "../../../service/apiService";
+import { Getalluser, Getuserphantrang } from "../../../service/apiService";
 import Modalupdate from "./Modalupdate";
 
 import TableUser from "./TableUser";
 import Modaluserview from "./Modaluserview";
 import ModalDelete from "./ModalDelete";
+import Tablephantrang from "./Tablephantrang";
+
 
 const MansUser = (props) => {
 
-    const [listuser, setlistuser] = useState([])
+    const LIMIT_USER = 7;
+
+    const [listuser, setlistuser] = useState([]);
     const [show, setShow] = useState(false);
-    const [userupdate, setuserupdate] = useState([])
+    const [userupdate, setuserupdate] = useState([]);
     const [showupdate, setShowupdate] = useState(false);
     const [showview, setShowview] = useState(false);
     const [viewuser, setviewuser] = useState([])
     const [showdelete, setShowdelete] = useState(false);
-    const [deleteuser, setdeleteuser] = useState()
+    const [deleteuser, setdeleteuser] = useState();
+    const [pageCount, setPageCount] = useState(0);
+
+    const [currenpage, setcurrenpage] = useState(1)
 
     useEffect(() => {
-        fetlistuser();
+        fetlistuserphantrang(1);
+
 
     }, [])
     const fetlistuser = async () => {
@@ -27,6 +35,17 @@ const MansUser = (props) => {
         console.log(">>>rest", res);
         if (res.EC === 0) {
             setlistuser(res.DT)
+
+        }
+    }
+
+    const fetlistuserphantrang = async (page, limit) => {
+        let res = await Getuserphantrang(page, LIMIT_USER);
+        console.log(">>>rest", res);
+        if (res.EC === 0) {
+            console.log("res.dt=", res.DT)
+            setlistuser(res.DT.users)
+            setPageCount(res.DT.totalPages)
         }
     }
     //////////////////////////
@@ -61,14 +80,22 @@ const MansUser = (props) => {
             <div className="User-content">
 
                 <ModalCreatuser fetlistuser={fetlistuser}
+                    fetlistuserphantrang={fetlistuserphantrang}
+
                     show={show}
                     setShow={setShow}
-                    handleShow={handleShow} />
+                    handleShow={handleShow}
+                    currenpage={currenpage}
+                    setcurrenpage={setcurrenpage}
+                />
                 <Modalupdate show={showupdate}
                     setShow={setShowupdate}
                     userupdate={userupdate}
                     fetlistuser={fetlistuser}
                     setuserupdate={setuserupdate}
+                    fetlistuserphantrang={fetlistuserphantrang}
+                    currenpage={currenpage}
+                    setcurrenpage={setcurrenpage}
                 />
                 <Modaluserview
 
@@ -76,6 +103,9 @@ const MansUser = (props) => {
                     setShow={setShowview}
                     viewuser={viewuser}
                     setviewuser={setviewuser}
+                    fetlistuserphantrang={fetlistuserphantrang}
+                    currenpage={currenpage}
+                    setcurrenpage={setcurrenpage}
                 />
                 <ModalDelete
                     show={showdelete}
@@ -83,6 +113,9 @@ const MansUser = (props) => {
                     deleteuser={deleteuser}
                     setdeleteuser={setdeleteuser}
                     fetlistuser={fetlistuser}
+                    fetlistuserphantrang={fetlistuserphantrang}
+                    currenpage={currenpage}
+                    setcurrenpage={setcurrenpage}
 
 
                 />
@@ -90,12 +123,27 @@ const MansUser = (props) => {
 
             </div>
             <div>
-                <TableUser listusers={listuser}
+                {/* <TableUser listusers={listuser}
 
                     handleShowupdate={handleShowupdate}
 
                     handleview={handleview}
                     handledelete={handledelete}
+                /> */}
+                <Tablephantrang
+
+                    listusers={listuser}
+
+                    handleShowupdate={handleShowupdate}
+
+                    handleview={handleview}
+                    handledelete={handledelete}
+                    fetlistuserphantrang={fetlistuserphantrang}
+                    pageCount={pageCount}
+                    currentPage={currenpage}
+                    setcurrenpage={setcurrenpage}
+
+
                 />
             </div>
         </div>

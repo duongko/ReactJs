@@ -78,7 +78,10 @@ const ModalCreatuser = (props) => {
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
-            await props.fetlistuser();
+            // await props.fetlistuser();
+
+
+            await props.fetlistuserphantrang(props.currenpage);
         }
         if (data && data.EC !== 0) {
             toast.error(data.EM);

@@ -21,6 +21,10 @@ const Deleteuser = (useid) => {
     return axios.delete('api/v1/participant', { data: { id: useid } });
 
 }
+const Getuserphantrang = (page, limit) => {
+    return axios.get(`api/v1/participant?page=${page}&limit=${limit}`);
+
+}
 
 const PutapiService = (id, email, username, role, img) => {
     const data = new FormData();//vì cần lấy file ảnh nên phải dùng FormData
@@ -35,4 +39,4 @@ const PutapiService = (id, email, username, role, img) => {
 
 
 }
-export { PostapiService, Getalluser, PutapiService, Deleteuser };
+export { PostapiService, Getalluser, PutapiService, Deleteuser, Getuserphantrang };

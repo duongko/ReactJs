@@ -22,7 +22,11 @@ const ModalDelete = (props) => {
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
-            await props.fetlistuser();
+            // await props.fetlistuser();
+            props.setcurrenpage(1)
+
+            await props.fetlistuserphantrang(1);
+
         }
         if (data && data.EC !== 0) {
             toast.error(data.EM);

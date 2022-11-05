@@ -11,6 +11,7 @@ import Admin from './coponent/admin/Admin';
 import Home from './coponent/home/Home';
 import Dashboard from './coponent/admin/content/Dashboard';
 import MansUser from './coponent/admin/content/MansUser';
+import Login from './coponent/Auth/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -33,6 +34,7 @@ root.render(
 
 
         </Route>
+        <Route path="/login" element={<Login />} />
 
 
       </Routes>
