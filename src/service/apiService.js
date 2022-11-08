@@ -1,6 +1,7 @@
 import axios from "../utils/axiosCustom";
 
 
+
 const PostapiService = (email, pass, username, role, img) => {
     const data = new FormData();//vì cần lấy file ảnh nên phải dùng FormData
 
@@ -13,8 +14,15 @@ const PostapiService = (email, pass, username, role, img) => {
 
 
 }
+
+// tk này hình thưc là formdata
 const Getalluser = () => {
     return axios.get('api/v1/participant/all');
+
+}
+
+const Postuserlogin = (useremail, userpass) => {
+    return axios.post('api/v1/login', { email: useremail, password: userpass });
 
 }
 const Deleteuser = (useid) => {
@@ -39,4 +47,8 @@ const PutapiService = (id, email, username, role, img) => {
 
 
 }
-export { PostapiService, Getalluser, PutapiService, Deleteuser, Getuserphantrang };
+export {
+    PostapiService, Getalluser, PutapiService, Deleteuser, Getuserphantrang,
+
+    Postuserlogin
+};

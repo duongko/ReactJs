@@ -29,7 +29,7 @@ const Admin = (props) => {
                 </div>
 
             </div>
-            <ToastContainer
+            {/* <ToastContainer
                 position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -41,8 +41,8 @@ const Admin = (props) => {
                 pauseOnHover
                 theme="light"
             />
-            {/* Same as */}
-            <ToastContainer />
+          
+            <ToastContainer /> */}
 
         </div>
     )

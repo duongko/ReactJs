@@ -1,7 +1,32 @@
+import { useState } from "react";
 import "../Auth/login.scss"
+import { Postuserlogin } from "../../service/apiService"
+import { toast } from 'react-toastify';
 
 
 const Login = (props) => {
+
+
+    const [email, setemail] = useState("")
+    const [pass, setpass] = useState("")
+    const handlelogin = async () => {
+        //valiable
+        let data = await Postuserlogin(email, pass)
+
+        if (data && data.EC === 0) {
+            toast.success(data.EM);
+
+        }
+        if (data && data.EC !== 0) {
+            toast.error(data.EM);
+
+        }
+
+
+        console.log("res login:", data)
+
+    }
+
     return (
         <div>
             <section className="h-80 gradient-form" style={{ background: "#eee" }}>
@@ -24,17 +49,24 @@ const Login = (props) => {
 
                                                 <div className="form-outline mb-4">
                                                     <input type="email" id="form2Example11" className="form-control"
-                                                        placeholder="Phone number or email address" />
-                                                    <label className="form-label" for="form2Example11">Username</label>
+                                                        value={email} placeholder="Phone number or email address"
+                                                        onChange={(event) => { setemail(event.target.value) }}
+                                                    />
+                                                    <label className="form-label" >Username</label>
                                                 </div>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="password" id="form2Example22" className="form-control" />
-                                                    <label className="form-label" for="form2Example22">Password</label>
+                                                    <input type="password" className="form-control" value={pass}
+
+                                                        onChange={(event) => { setpass(event.target.value) }}
+                                                    />
+                                                    <label className="form-label" >Password</label>
                                                 </div>
 
                                                 <div className="text-center pt-1 mb-5 pb-1">
-                                                    <button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log
+                                                    <button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"
+                                                        onClick={() => { handlelogin() }}
+                                                    >Log
                                                         in</button>
                                                     <a className="text-muted" href="#!">Forgot password?</a>
                                                 </div>
