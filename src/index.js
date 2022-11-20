@@ -10,6 +10,8 @@ import Layout from './Layout';
 import { ToastContainer, toast } from 'react-toastify';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { detectOverflow } from '@popperjs/core'
+import "nprogress/nprogress.css"
 
 
 

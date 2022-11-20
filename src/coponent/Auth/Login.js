@@ -4,8 +4,9 @@ import { Postuserlogin } from "../../service/apiService"
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { FaAddressBook, FaAddressCard, FaAdversal, FaBabyCarriage, FaTachometerAlt, FaReact, FaEye, FaEyeDropper, FaEyeSlash } from 'react-icons/fa';
-
-
+import { useDispatch } from "react-redux";
+import { doLogin } from "../../redux/action/userAction";
+import ImSpinner10, { ImAccessibility, ImSpinner11 } from "react-icons/im"
 const Login = (props) => {
     const navigate = useNavigate()
 
@@ -14,12 +15,21 @@ const Login = (props) => {
     const [pass, setpass] = useState("")
     const [ispass, setispass] = useState(true)
 
+    const [loading, setloading] = useState(false)
+
+    const dispatch = useDispatch()
+
     const handlelogin = async () => {
+
+        setloading(true)
         //valiable
         let data = await Postuserlogin(email, pass)
 
         if (data && data.EC === 0) {
             toast.success(data.EM);
+            ///kêt nối với redux qua dispatch(action)
+            dispatch(doLogin(data))
+            setloading(false)
             navigate('/')
             //navigate dùng để chuyển trang
 
@@ -82,9 +92,9 @@ const Login = (props) => {
 
                                                 <div className="text-center pt-1 mb-5 pb-1">
                                                     <button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"
-                                                        onClick={() => { handlelogin() }}
-                                                    >Log
-                                                        in</button>
+                                                        onClick={() => { handlelogin() }} disabled={loading}
+                                                    >{loading == true && <ImSpinner11 className="load-icon" />} Log
+                                                        in vào trang</button>
                                                     <a className="text-muted" href="#!">Forgot password?</a>
                                                 </div>
                                                 <div className="d-flex align-items-center justify-content-center pb-4">

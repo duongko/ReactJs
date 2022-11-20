@@ -22,7 +22,7 @@ const Getalluser = () => {
 }
 
 const Postuserlogin = (useremail, userpass) => {
-    return axios.post('api/v1/login', { email: useremail, password: userpass });
+    return axios.post('api/v1/login', { email: useremail, password: userpass, delay: 3000 });
 
 }
 const PostuserSignup = (useremail, userpass, name) => {
