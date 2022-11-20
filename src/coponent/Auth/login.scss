@@ -40,3 +40,14 @@
 .h-100 {
     height: 43% !important;
 }
+
+.pass-group {
+    position: relative;
+
+    .icon-eye {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        bottom: 40px;
+    }
+}

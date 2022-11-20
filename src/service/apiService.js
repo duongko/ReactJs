@@ -25,6 +25,10 @@ const Postuserlogin = (useremail, userpass) => {
     return axios.post('api/v1/login', { email: useremail, password: userpass });
 
 }
+const PostuserSignup = (useremail, userpass, name) => {
+    return axios.post('api/v1/register', { email: useremail, password: userpass, username: name });
+
+}
 const Deleteuser = (useid) => {
     return axios.delete('api/v1/participant', { data: { id: useid } });
 
@@ -50,5 +54,5 @@ const PutapiService = (id, email, username, role, img) => {
 export {
     PostapiService, Getalluser, PutapiService, Deleteuser, Getuserphantrang,
 
-    Postuserlogin
+    Postuserlogin, PostuserSignup
 };

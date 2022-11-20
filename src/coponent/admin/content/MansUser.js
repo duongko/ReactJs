@@ -27,6 +27,7 @@ const MansUser = (props) => {
 
     useEffect(() => {
         fetlistuserphantrang(1);
+        console.log("didmount:")
 
 
     }, [])
@@ -70,6 +71,7 @@ const MansUser = (props) => {
 
     };
     const handleShow = () => setShow(true);
+    console.log('render')
     return (
         <div className="mansUser">
             <div className="tittle">
@@ -142,6 +144,7 @@ const MansUser = (props) => {
                     pageCount={pageCount}
                     currentPage={currenpage}
                     setcurrenpage={setcurrenpage}
+
 
 
                 />

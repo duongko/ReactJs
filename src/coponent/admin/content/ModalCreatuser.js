@@ -86,56 +86,57 @@ const ModalCreatuser = (props) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Add New User</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><form className="row g-3">
-                    <div className="col-md-6">
-                        <label className="form-label">Email</label>
-                        <input type="email" className="form-control" id="inputEmail4" value={email} onChange={(event) => {
-                            setemail(event.target.value)
-                        }} />
-                    </div>
-                    <div className="col-md-6">
-                        <label className="form-label">Password</label>
-                        <input type="password" className="form-control" value={pass} onChange={(event) => { setpass(event.target.value) }} />
-                    </div>
+                <Modal.Body>
+                    <form className="row g-3">
+                        <div className="col-md-6">
+                            <label className="form-label">Email</label>
+                            <input type="email" className="form-control" id="inputEmail4" value={email} onChange={(event) => {
+                                setemail(event.target.value)
+                            }} />
+                        </div>
+                        <div className="col-md-6">
+                            <label className="form-label">Password</label>
+                            <input type="password" className="form-control" value={pass} onChange={(event) => { setpass(event.target.value) }} />
+                        </div>
 
-                    <div className="col-md-6">
-                        <label className="form-label">UserName</label>
-                        <input type="text" className="form-control" value={username} onChange={(event) => { setusername(event.target.value) }} />
-                    </div>
-                    <div className="col-md-4">
-                        <label className="form-label">Role</label>
-                        <select id="inputState" className="form-select" onChange={(event) => { setrole(event.target.value) }}>
-                            <option value="User">USER</option>
-                            <option value="Admin">ADMIN</option>
+                        <div className="col-md-6">
+                            <label className="form-label">UserName</label>
+                            <input type="text" className="form-control" value={username} onChange={(event) => { setusername(event.target.value) }} />
+                        </div>
+                        <div className="col-md-4">
+                            <label className="form-label">Role</label>
+                            <select id="inputState" className="form-select" onChange={(event) => { setrole(event.target.value) }}>
+                                <option value="User">USER</option>
+                                <option value="Admin">ADMIN</option>
 
-                        </select>
-                    </div>
-                    <div className='col-md-12'>
-                        <label className="form-label upload" htmlFor='uploadfile'>
-                            <FcPlus size="1.2em"
-                            />Upload File Image
-                        </label>
-                        <input
-                            type="file"
-                            id="uploadfile" hidden
-                            onChange={(event) => { handleimg(event) }}
-                        />
-
-
-                    </div>
-                    <div className='col-md-12 img-preview'>
-                        {previewimg ?
-                            <img src={previewimg}></img>
-                            :
-                            <span>preview images</span>
-
-                        }
+                            </select>
+                        </div>
+                        <div className='col-md-12'>
+                            <label className="form-label upload" htmlFor='uploadfile'>
+                                <FcPlus size="1.2em"
+                                />Upload File Image
+                            </label>
+                            <input
+                                type="file"
+                                id="uploadfile" hidden
+                                onChange={(event) => { handleimg(event) }}
+                            />
 
 
+                        </div>
+                        <div className='col-md-12 img-preview'>
+                            {previewimg ?
+                                <img src={previewimg}></img>
+                                :
+                                <span>preview images</span>
+
+                            }
 
 
-                    </div>
-                </form></Modal.Body>
+
+
+                        </div>
+                    </form></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close

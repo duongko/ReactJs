@@ -9,9 +9,10 @@ import Login from './coponent/Auth/Login';
 import App from './App';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Signup from "./coponent/Auth/Signup";
 const Layout = (props) => {
     return (
-
+        //phân bố bố cục
         <>
             <Routes>
                 <Route path="/" element={<App />} >
@@ -21,6 +22,8 @@ const Layout = (props) => {
                     />
 
                     <Route index element={<Home />} />
+                    {/* 
+                    route con sẽ vào phần Outlet của Route cha */}
                 </Route>
                 <Route path="/admin" element={<Admin />} >
                     <Route path="Dashboard" element={<Dashboard />} />
@@ -31,6 +34,7 @@ const Layout = (props) => {
 
                 </Route>
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
 
 
             </Routes>
