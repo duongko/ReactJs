@@ -9,8 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './Layout';
 import { ToastContainer, toast } from 'react-toastify';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import { store, persistor } from './redux/store';
 import { detectOverflow } from '@popperjs/core'
+import { PersistGate } from 'redux-persist/integration/react'
 import "nprogress/nprogress.css"
 
 
@@ -20,23 +21,26 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Layout />
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-        {/* Same as */}
-        <ToastContainer />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+
+        <BrowserRouter>
+          <Layout />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+          {/* Same as */}
+          <ToastContainer />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
 
   </React.StrictMode>
