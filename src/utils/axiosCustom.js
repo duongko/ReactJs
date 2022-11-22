@@ -1,5 +1,6 @@
 import axios from "axios"
 import NProgress from 'nprogress'
+import { store } from "../redux/store";
 
 
 
@@ -9,6 +10,13 @@ const instance = axios.create({
 });
 // Add a request interceptor
 instance.interceptors.request.use(function (config) {
+
+    console.log('gia tri state Redux', store.getState())
+    const access_token = store?.getState()?.user?.account?.access_token
+    const isAuthenticated = store?.getState()?.user?.isAuthenticated
+
+
+    config.headers["Authorization"] = "Bearer " + access_token;
 
     NProgress.start()
 

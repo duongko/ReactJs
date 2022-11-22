@@ -38,6 +38,13 @@ const Getuserphantrang = (page, limit) => {
 
 }
 
+
+const GetQuizbyuser = () => {
+
+
+    return axios.get('api/v1/quiz-by-participant')
+}
+
 const PutapiService = (id, email, username, role, img) => {
     const data = new FormData();//vì cần lấy file ảnh nên phải dùng FormData
     data.append('id', id);
@@ -54,5 +61,5 @@ const PutapiService = (id, email, username, role, img) => {
 export {
     PostapiService, Getalluser, PutapiService, Deleteuser, Getuserphantrang,
 
-    Postuserlogin, PostuserSignup
+    Postuserlogin, PostuserSignup, GetQuizbyuser
 };

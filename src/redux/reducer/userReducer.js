@@ -14,6 +14,7 @@ const INITIAL_STATE = {
     isAuthenticated: false
 };
 const userReducer = (state = INITIAL_STATE, action) => {
+    ///action lấy từ dispatch(action)
     switch (action.type) {
         case FETCH_USER_LOGIN:
 

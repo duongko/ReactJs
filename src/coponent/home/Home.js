@@ -1,9 +1,12 @@
 import videohomepage from "../../assets/video-1920.mp4"
 
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
     const isAuthenticated = useSelector(state => state.user.isAuthenticated)
-    const account = useSelector(state => state.user.account)
+    const Navigate = useNavigate()
+
     return (
 
         <div className="home-container">
@@ -24,7 +27,15 @@ const Home = () => {
                 </div>
 
                 <div className="title-3">
-                    <button>Get started- it's free</button>
+
+                    {isAuthenticated === true ?
+                        <button onClick={() => { Navigate('/users') }}>Start Now Quiz</button >
+                        :
+                        <button onClick={() => { Navigate('/login') }} >Get started- it's free</button>
+
+
+                    }
+
 
                 </div>
             </div>

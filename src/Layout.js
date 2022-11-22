@@ -10,6 +10,7 @@ import App from './App';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Signup from "./coponent/Auth/Signup";
+import Listquit from "./coponent/user/Listquit";
 const Layout = (props) => {
     return (
         //phân bố bố cục
@@ -18,7 +19,7 @@ const Layout = (props) => {
                 <Route path="/" element={<App />} >
                     <Route
                         path="users"
-                        element={<User />}
+                        element={<Listquit />}
                     />
 
                     <Route index element={<Home />} />

@@ -1,9 +1,10 @@
+import Listquit from "./Listquit";
 
 const User = (props) => {
     return (
         <div>
-
-            user alollll
+            <Listquit />
+            sdfsdf
         </div>
     )
 }

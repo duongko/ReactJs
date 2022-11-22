@@ -11,6 +11,7 @@ const Header = () => {
 
     const isAuthenticated = useSelector(state => state.user.isAuthenticated)
     const account = useSelector(state => state.user.account)
+
     const Navigate = useNavigate()
     const handlelogin = () => {
         Navigate('/login')
@@ -21,7 +22,7 @@ const Header = () => {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home" className='navbar-nav'>Duong Manh manh</Navbar.Brand>
+                <Navbar.Brand href="#home" className='navbar-nav'>xin chào {isAuthenticated === false ? 'bạn' : account.username}</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
