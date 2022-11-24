@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { detailquiz } from "../../redux/action/startnowAction";
 import { GetQuizbyuser } from "../../service/apiService"
 import './listquiz.scss'
 
 const Listquit = (props) => {
 
     const [Listquit, setListquit] = useState([]);
+    const navigate = useNavigate()
+
+    const dispatch = useDispatch()
 
 
 
@@ -20,11 +26,22 @@ const Listquit = (props) => {
 
     const GetQuiz = async () => {
         let res = await GetQuizbyuser()
-        console.log("gia tri cau hoi", res)
+        console.log("api", res)
 
         if (res.DT && res.EC === 0) {
             setListquit(res.DT)
         }
+
+
+
+
+    }
+
+    const StartNow = (data) => {
+
+        dispatch(detailquiz(data))
+        navigate(`/quiz/${data.id}`)
+
 
 
 
@@ -46,7 +63,7 @@ const Listquit = (props) => {
                         <div className="card-body">
                             <h5 className="card-title">Quiz {index + 1}</h5>
                             <p className="card-text">{value.description}</p>
-                            <a href="#" className="btn btn-primary">Start Now</a>
+                            <a href="#" className="btn btn-primary" onClick={() => StartNow(value)} >Start Now</a>
                         </div>
                     </div>
 

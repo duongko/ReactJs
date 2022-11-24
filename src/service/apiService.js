@@ -56,10 +56,17 @@ const PutapiService = (id, email, username, role, img) => {
     data.append('userImage', img);
     return axios.put('api/v1/participant', data);
 
+}
+const GetQuizid = (id) => {
+    return axios.get(`api/v1/questions-by-quiz?quizId=${id}`)
+}
+const postSubmitQuiz = (data) => {
 
+    // console.log("data raw:", { ...data })
+    return axios.post(`api/v1/quiz-submit`, { ...data })
 }
 export {
     PostapiService, Getalluser, PutapiService, Deleteuser, Getuserphantrang,
 
-    Postuserlogin, PostuserSignup, GetQuizbyuser
+    Postuserlogin, PostuserSignup, GetQuizbyuser, GetQuizid, postSubmitQuiz
 };

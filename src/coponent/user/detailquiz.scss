@@ -1,0 +1,23 @@
+.Detail-quiz-container {
+
+    display: flex;
+
+    gap: 30px;
+
+    .left-content {
+
+        border: 2px solid red;
+        width: 70%;
+
+        .footer {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .right-content {
+        border: 2px solid red;
+        width: 20%;
+
+    }
+}
